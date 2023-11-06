@@ -1,9 +1,22 @@
 const express = require('express');
+const routes = require('./routes/indexroutes')
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-const path = require('path');
 
-const fs = require('fs');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 3001;
+
+
+app.use(express.static('public'));
+
+app.use(routes)
+
+
+app.listen(PORT, () =>
+    console.log(`App listening at http://localhost:${PORT}`)
+);
+
+
