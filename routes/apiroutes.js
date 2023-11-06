@@ -18,7 +18,11 @@ router.get('/notes', function (req, res) {
 
 
 
-
+router.post('/notes', function (req, res){
+    const newNote = {title: req.body.title, text: req.body.text, id:randomId()}
+    readAndAppend(newNote, './db/db.json')
+    res.json(newNote)
+})
 
 
 
