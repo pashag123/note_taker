@@ -24,6 +24,11 @@ router.post('/notes', function (req, res){
     res.json(newNote)
 })
 
+router.delete('/notes/:id', function (req, res) {
+    readAndRemove(req.params.id, './db/db.json')
+    res.json('Deleted')
+})
+
 
 
 
